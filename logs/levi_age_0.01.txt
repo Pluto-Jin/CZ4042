@@ -1,0 +1,32 @@
+Use GPU: 2 for training
+=> creating model 'levi'
+=> enabled age embedding
+mm_cls(
+  (backbone): levi(
+    (conv1): Conv2d(3, 96, kernel_size=(7, 7), stride=(4, 4))
+    (conv2): Conv2d(96, 256, kernel_size=(5, 5), stride=(1, 1), padding=same)
+    (conv3): Conv2d(256, 384, kernel_size=(3, 3), stride=(1, 1), padding=same)
+    (relu): ReLU(inplace=True)
+    (pool): MaxPool2d(kernel_size=3, stride=2, padding=0, dilation=1, ceil_mode=False)
+    (norm): LocalResponseNorm(5, alpha=0.0001, beta=0.75, k=1.0)
+    (dropout): Dropout(p=0.5, inplace=False)
+    (fc1): Linear(in_features=13824, out_features=512, bias=True)
+    (fc2): Linear(in_features=512, out_features=512, bias=True)
+  )
+  (dropout): Dropout(p=0.5, inplace=False)
+  (fc): Linear(in_features=514, out_features=2, bias=True)
+)
+Traceback (most recent call last):
+  File "4042.py", line 490, in <module>
+    main()
+  File "4042.py", line 128, in main
+    main_worker(args.gpu, args)
+  File "4042.py", line 273, in main_worker
+    loss_t, acc_t = train(train_loader, model, criterion, optimizer, epoch, args)
+  File "4042.py", line 353, in train
+    loss.backward()
+  File "/home/chengkai/.local/lib/python3.8/site-packages/torch/_tensor.py", line 307, in backward
+    torch.autograd.backward(self, gradient, retain_graph, create_graph, inputs=inputs)
+  File "/home/chengkai/.local/lib/python3.8/site-packages/torch/autograd/__init__.py", line 154, in backward
+    Variable._execution_engine.run_backward(
+RuntimeError: CUDA out of memory. Tried to allocate 28.00 MiB (GPU 2; 10.76 GiB total capacity; 337.23 MiB already allocated; 33.44 MiB free; 356.00 MiB reserved in total by PyTorch) If reserved memory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
