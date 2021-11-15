@@ -241,8 +241,8 @@ def main_worker(gpu, args):
                     transforms.ToTensor(),
                     normalize,
              ])
-    train_dataset = CustomImageDataset('X_train_age.csv','y_train.csv',args.data,t)
-    val_dataset = CustomImageDataset('X_test_age.csv','y_test.csv',args.data,t)
+    train_dataset = CustomImageDataset('./train_test_split/X_train_age.csv','./train_test_split/y_train.csv',args.data,t)
+    val_dataset = CustomImageDataset('./train_test_split/X_test_age.csv','./train_test_split/y_test.csv',args.data,t)
 
     train_loader = torch.utils.data.DataLoader(
         train_dataset, batch_size=args.batch_size, shuffle=True,
